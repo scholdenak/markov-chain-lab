@@ -11,8 +11,14 @@ def open_and_read_file(file_path):
     """
 
     # your code goes here
+    
+    markov_file = open("file_path").read()
+        
+    #opens the file
 
-    return 'Contents of your file as one long string'
+    print(markov_file)
+
+    #return 'Contents of your file as one long string'
 
 
 def make_chains(text_string):
