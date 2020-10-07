@@ -12,11 +12,11 @@ def open_and_read_file(file_path):
 
     # your code goes here
     
-    markov_file = open("file_path").read()
+    text_string = open(file_path).read()
         
     #opens the file
 
-    print(markov_file)
+    return text_string
 
     #return 'Contents of your file as one long string'
 
@@ -49,8 +49,46 @@ def make_chains(text_string):
     chains = {}
 
     # your code goes here
+    markov_words = text_string.split()
+    markov_list = []
+    for i in range(len(markov_words) - 2 ):
+        # markov_list.extend(markov_words[i], markov_words[i+1])
+        markov_tuples = tuple((markov_words[i], markov_words[i+1]))
+        # markov_list = markov_list + markov_tuples
+        markov_list.append(markov_tuples)
 
-    return chains
+        for tuple_key in markov_list:
+            
+            if tuple_key not in chains:
+                chains[tuple_key] = list([chains.get(tuple_key, markov_words[i + 2])])
+            
+            for tuple_key, value in chains:
+                (list(value).append(markov_words[i]))
+            # 
+            #     chains[tuple_key] = [chains[tuple_key] + (markov_words[i + 2])]
+            # if tuple_key in chains:
+            #     chains[tuple_key] = add to dict(chains.get(tuple_key, markov_words[i + 2])
+                # chains[tuple_key] = markov_words[i + 2]
+        # append dict {(tuple):[markov_words[i + 2]]}
+        # for key in markov_tuples:
+        # if key not in chains:
+        #     # append dict {(tuple):[markov_words[i + 2]]
+        # if key is in chains:
+            # go to key (append the list)
+
+        # for key in markov_tuples:
+        #     chains[key] = chains.get(key, markov_words[i + 2])
+
+        # else 
+
+        
+        
+        
+    print(chains)
+
+    # create tuple  from markov words[i] and markov_words[i + 1]
+
+    # return chains
 
 
 def make_text(chains):
